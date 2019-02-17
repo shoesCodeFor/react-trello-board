@@ -62,6 +62,7 @@ export default class CardComponent extends Component {
     connectDragSource: PropTypes.func.isRequired,
     connectDragPreview: PropTypes.func.isRequired,
     isDragging: PropTypes.bool.isRequired,
+    column: PropTypes.number,
     x: PropTypes.number.isRequired,
     y: PropTypes.number,
     stopScrolling: PropTypes.func
@@ -74,11 +75,11 @@ export default class CardComponent extends Component {
   }
 
   render() {
-    const { isDragging, connectDragSource, item } = this.props;
+    const { isDragging, connectDragSource, item, column } = this.props;
 
     return connectDragSource(
       <div>
-        <Card style={getStyles(isDragging)} item={item} />
+        <Card style={getStyles(isDragging)} item={item} column={column} />
       </div>
     );
   }

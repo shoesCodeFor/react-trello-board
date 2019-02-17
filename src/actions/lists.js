@@ -1,10 +1,24 @@
 import faker from 'faker';
+import moment from 'moment';
 
 export const GET_LISTS_START = 'GET_LISTS_START';
 export const GET_LISTS = 'GET_LISTS';
 export const MOVE_CARD = 'MOVE_CARD';
 export const MOVE_LIST = 'MOVE_LIST';
 export const TOGGLE_DRAGGING = 'TOGGLE_DRAGGING';
+
+const randomTransaction = () => {
+  const transactions = ['Invoice', 'Sales Order', 'Transfer'];
+  const transactionID = Math.floor(Math.random() * 30000) + 20000;
+  const transactionType = transactions[Math.floor(Math.random() *3)];
+  return `${transactionType} ${transactionID}`;
+};
+
+/**
+ * @function getDate - Returns a moment.js date
+ * @param {*} numberOfDays
+ */
+const getDate = (numberOfDays) => moment().add(numberOfDays, 'days').format('ll');
 
 export function getLists(quantity) {
   return dispatch => {
@@ -18,15 +32,15 @@ export function getLists(quantity) {
         for (let ic = 0; ic < randomQuantity; ic++) {
           cards.push({
             id: count,
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
-            title: faker.name.jobTitle()
+            companyName: faker.company.companyName(),
+            city: faker.address.city(),
+            title: randomTransaction()// faker.name.jobTitle()
           });
           count = count + 1;
         }
         lists.push({
           id: i,
-          name: faker.commerce.productName(),
+          name: getDate(i), // faker.commerce.productName(),
           cards
         });
       }

@@ -12,6 +12,7 @@
     "faker": "3.1.0",
     "immutable": "3.8.1",
     "lodash": "4.14.0",
+    "moment": "2.24.0",
     "react": "15.2.1",
     "react-dnd": "2.1.4",
     "react-dnd-html5-backend": "2.1.2",
