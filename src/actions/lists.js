@@ -1,4 +1,6 @@
 import faker from 'faker';
+// Import Axios instead
+
 import moment from 'moment';
 
 export const GET_LISTS_START = 'GET_LISTS_START';
@@ -16,7 +18,7 @@ const randomTransaction = () => {
 
 /**
  * @function getDate - Returns a moment.js date
- * @param {*} numberOfDays
+ * @param {Number} numberOfDays
  */
 const getDate = (numberOfDays) => moment().add(numberOfDays, 'days').format('ll');
 
@@ -35,6 +37,7 @@ export function getLists(quantity) {
             companyName: faker.company.companyName(),
             city: faker.address.city(),
             title: randomTransaction()// faker.name.jobTitle()
+            // This should be where we post a date onto the cards
           });
           count = count + 1;
         }
