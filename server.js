@@ -9,9 +9,9 @@ new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true
-}).listen(port || 4000, 'localhost', (err) => {
+}).listen(process.env.PORT || 5000, 'localhost', (err) => {
   if (err) {
     return console.log(err);
   }
-  console.log('Listening at http://localhost:4000/');
+  console.log('Listening!');
 });
