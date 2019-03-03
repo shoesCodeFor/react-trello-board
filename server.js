@@ -2,13 +2,14 @@ const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('./webpack.config.development');
 
+const port = process.env.PORT;
 /* eslint-disable no-console */
 /* eslint-disable consistent-return */
 new WebpackDevServer(webpack(config), {
   publicPath: config.output.publicPath,
   hot: true,
   historyApiFallback: true
-}).listen(4000, 'localhost', (err) => {
+}).listen(port || 4000, 'localhost', (err) => {
   if (err) {
     return console.log(err);
   }
